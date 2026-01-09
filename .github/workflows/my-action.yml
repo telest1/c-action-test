@@ -7,13 +7,14 @@ on: [push]
 # Job run in parallel by default, each run steps in sequence
 jobs: 
 
-    # Job to print something out
+    # Job 1 to print something out
     say-hello:
         runs-on: ubuntu-latest
         steps:
           - run: echo "Hello, GitHub Actions!"
           
-        # Job to build and test our C code
+    # Job 2 to build and test our C code
+    test-c-code:
         needs: [say-hello]
         runs-on: ubuntu-latest
         steps:
@@ -26,7 +27,7 @@ jobs:
           - name: Install dependencies
             run: sudo apt install -y build-essential python3
             
-            # 
+            # Posting what the active directory is
           - run: pwd
 
             # Run our test
